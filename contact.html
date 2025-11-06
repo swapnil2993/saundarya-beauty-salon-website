@@ -1,0 +1,168 @@
+<!-- I have already made navigation bar so please watch part 1 of this series I am just going to copy all the code  -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saundarya Beauty Salon | Redefining Elegance & Style</title>
+
+    <!-- adding css  -->
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- about css  -->
+    <link rel="stylesheet" href="./css/contact.css">
+
+    <!-- mediaQuery css  -->
+    <link rel="stylesheet" href="./css/MediaQuery.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <header>
+        <a href="./index.html" class="logo">Saundarya Beauty Salon</a>
+        <div class="menuToggle"></div>
+        <nav>
+            <ul>
+                <li><a href="./index.html" class="active">Home</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./services.html">Services</a></li>
+                <li><a href="./portfolio.html">Portfolio</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+                <li><a href="tel:+918087137894" id="NavNum">+91 8087137894</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <section class="sectionFirst">
+        <h1>Contact Us</h1>
+
+        <!-- transparent Img -->
+        <section class="transform-img">
+            <img src="./img/background180.svg" alt="Elegant floral background design">
+        </section>
+    </section>
+
+
+    <section class="FormMap">
+        <div class="form">
+            <div class="f-head">Get In Touch</div>
+            <div class="f-para">
+                Have a question or want to book an appointment? Fill out the form below and send us a WhatsApp message
+                instantly!
+            </div>
+
+            <form id="whatsappForm">
+                <div class="form-group">
+                    <input type="text" id="name" placeholder="Full Name" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="tel" id="phone" placeholder="Phone Number" pattern="[0-9]{10}" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="Email Address" required>
+                </div>
+
+                <div class="form-group">
+                    <select id="service" required>
+                        <option value="" disabled selected>Select a Service</option>
+                        <option value="Clean Nail Art">Clean Nail Art</option>
+                        <option value="Hair Styling">Hair Styling</option>
+                        <option value="Full Body Massage">Full Body Massage</option>
+                        <option value="Professional Makeup">Professional Makeup</option>
+                        <option value="Luxury Spa Experience">Luxury Spa Experience</option>
+                        <option value="Authorized Botox">Authorized Botox</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <textarea id="message" cols="30" rows="5" placeholder="Your Message or Appointment Details"
+                        required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Send via WhatsApp</button>
+            </form>
+        </div>
+
+        <div class="map">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d377638.9122275711!2d73.78022153119116!3d18.86148672497886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f17!3m3!1m2!1s0x3bc2b99db193040f%3A0x11b8866b4f46697c!2sSaundarya%20Beauty%20Salon!5e0!3m2!1sen!2sin!4v1762268890819!5m2!1sen!2sin"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </section>
+
+    <!-- beforefooter  -->
+    <div class="beforefooter">
+        <div class="box">
+            <div class="bf-text">Quick Links</div>
+            <ul>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./services.html">Services</a></li>
+                <li><a href="./portfolio.html">Portfolio</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="box">
+            <div class="bf-text">Find Us</div>
+            <div class="address">
+                S. No. 47, Pethkar Siyona, D1-1001, 48 & 50, Punawale, Pimpri-Chinchwad, Pune, Maharashtra 411033
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="bf-text">Call Us</div>
+            <div class="phone">
+                <a href="tel:+918087137894">+91 8087137894</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer  -->
+    <footer>
+        <div class="fbox">Copyright &copy; 2025 Saundarya Beauty Salon</div>
+        <div class="fbox">Powered By Saundarya Beauty Salon</div>
+    </footer>
+
+    <script src="./js/script.js"></script>
+    <script>
+        document.getElementById('whatsappForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const phoneNumber = "918087137894";
+
+            // Collect form values
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value.trim();
+
+            // Create WhatsApp message text
+            const text = `Hello! My name is ${name}.\n` +
+                `I would like to know more about *${service}*.\n\n` +
+                `📞 Phone: ${phone}\n` +
+                `📧 Email: ${email}\n` +
+                `💬 Message: ${message}`;
+
+            // Encode the text for URL
+            const encodedText = encodeURIComponent(text);
+
+            // Create WhatsApp URL
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedText}`;
+
+            // Open WhatsApp chat
+            window.open(whatsappURL, '_blank');
+        });
+    </script>
+</body>
+
+</html>
