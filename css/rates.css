@@ -447,12 +447,14 @@
   border: 1px dashed var(--global-color-gold);
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
-  display: inline-block;
-  margin-bottom: 1rem;
+  display: block;
+  width: fit-content;
+  margin: 0 auto 1rem;
 }
 
 .game-result-claim {
-  display: inline-block !important;
+  display: block !important;
+  width: fit-content;
   margin: 0 auto 1.5rem;
 }
 
