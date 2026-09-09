@@ -1,5 +1,12 @@
 
 
+const offerClose = document.querySelector('.offer-close');
+if (offerClose) {
+    offerClose.onclick = function () {
+        offerClose.closest('.offer-banner').style.display = 'none';
+    }
+}
+
 let menuToggle = document.querySelector('.menuToggle');
 let header = document.querySelector('header');
 let section = document.querySelector('section');

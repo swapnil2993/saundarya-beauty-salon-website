@@ -3,9 +3,5 @@
 User-agent: *
 Allow: /
 
-# Disallow unnecessary files
-Disallow: /css/
-Disallow: /js/
-
 # Sitemap location
 Sitemap: https://sparkly-jalebi-1969a5.netlify.app/sitemap.xml

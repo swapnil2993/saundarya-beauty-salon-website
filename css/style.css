@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&family=Philosopher&family=Poppins:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,500&family=Poppins:wght@300;400;500;600&display=swap");
 
 * {
   padding: 0;
@@ -6,21 +6,24 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   overflow-x: hidden;
+  overflow-y: visible;
 }
 
 :root {
   --font-01: "Poppins", sans-serif;
-  --font-02: "Philosopher", sans-serif;
+  --font-02: "Playfair Display", serif;
+  --font-03: "Dancing Script", cursive;
 
-  /* color  */
-  --global-color-0: #e41345;
-  --global-color-1: #f70077;
+  /* color - gold & black palette, matched to the salon logo */
+  --global-color-0: #B8860B;
+  --global-color-1: #F8D856;
   --global-color-2: #1a1a1a;
   --global-color-3: #3e4359;
   --global-color-4: #f7f7f7;
   --global-color-5: #fff;
-  --global-color-6: #243673;
-  --global-color-7: #bfd1ff;
+  --global-color-6: #E8D9AE;
+  --global-color-7: #FCF8ED;
+  --global-color-gold: #B8860B;
 }
 
 body {
@@ -43,18 +46,42 @@ header {
 }
 
 header .logo {
-  color: var(--global-color-1);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   text-decoration: none;
-  font-weight: 600;
-  font-size: xx-large;
-  font-family: var(--font-02);
-
-  text-shadow: 0.5px 0.5px 3px var(--global-color-1);
   transition: 0.4s;
 }
 
+header .logo img {
+  height: 52px;
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.35));
+}
+
+header .logo .logo-text {
+  color: var(--global-color-1);
+  font-family: var(--font-02);
+  font-weight: 600;
+  font-size: 1.35rem;
+  line-height: 1.5em;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  header .logo .logo-text {
+    display: none;
+  }
+
+  header .logo img {
+    height: 44px;
+  }
+}
+
 header .logo:hover {
-  transform: scale(1.1);
+  transform: scale(1.06);
 }
 
 header ul {
@@ -256,7 +283,7 @@ header ul li #NavNum:hover {
 .sectionFirst .frontPage .address {
   color: var(--global-color-0);
   font-size: 25px;
-  line-height: 1.2em;
+  line-height: 1.4em;
   font-family: var(--font-02);
 }
 
@@ -269,15 +296,20 @@ header ul li #NavNum:hover {
 /* .sectionFirst .frontPage .para {} */
 
 .sectionFirst .frontPage .btn {
-  border: 1px solid var(--global-color-0);
+  border: 1px solid var(--global-color-1);
   width: fit-content;
   border-radius: 7px;
   padding: 17px 60px;
   text-decoration: none;
-  background-color: var(--global-color-1);
-  color: var(--global-color-4);
-  font-weight: 400;
+  background-color: var(--global-color-2);
+  color: var(--global-color-1);
+  font-weight: 600;
   transition: all 0.4s ease;
+}
+
+.sectionFirst .frontPage .btn:hover {
+  background-color: var(--global-color-1);
+  color: var(--global-color-2);
 }
 
 .sectionFirst .frontPage .btn a {
@@ -287,15 +319,17 @@ header ul li #NavNum:hover {
 }
 
 .sectionFirst .frontPage .btn a:nth-child(1) {
-  border: 1px solid var(--global-color-0);
-  background-color: var(--global-color-0);
-  color: var(--global-color-4);
+  border: 1px solid var(--global-color-2);
+  background-color: var(--global-color-2);
+  color: var(--global-color-1);
+  font-weight: 600;
   transition: all 0.4s ease;
 }
 
 .sectionFirst .frontPage .btn a:nth-child(1):hover {
   border: 1px solid var(--global-color-1);
   background-color: var(--global-color-1);
+  color: var(--global-color-2);
 }
 
 .sectionFirst .frontPage .btn a:nth-child(2) {
@@ -306,9 +340,9 @@ header ul li #NavNum:hover {
 }
 
 .sectionFirst .frontPage .btn a:nth-child(2):hover {
-  border: 1px solid var(--global-color-4);
+  border: 1px solid var(--global-color-1);
   background-color: var(--global-color-1);
-  color: var(--global-color-4);
+  color: var(--global-color-2);
 }
 
 /* transform-img */
@@ -373,9 +407,10 @@ header ul li #NavNum:hover {
 
 .sectionSecond .textInfo .greet {
   color: var(--global-color-0);
-  font-family: var(--font-02);
-  font-size: 1.5rem;
-  line-height: 1.2em;
+  font-family: var(--font-03);
+  font-size: 2rem;
+  line-height: 1.7em;
+  padding-bottom: 0.2em;
 }
 
 .sectionSecond .textInfo .title {
@@ -387,15 +422,21 @@ header ul li #NavNum:hover {
 /* .sectionSecond .textInfo .para {} */
 
 .sectionSecond .textInfo .btn {
-  border: 1px solid var(--global-color-0);
+  border: 1px solid var(--global-color-2);
   width: fit-content;
   border-radius: 7px;
   padding: 17px 60px;
   text-decoration: none;
-  background-color: var(--global-color-1);
-  color: var(--global-color-4);
-  font-weight: 400;
+  background-color: var(--global-color-2);
+  color: var(--global-color-1);
+  font-weight: 600;
   transition: all 0.4s ease;
+}
+
+.sectionSecond .textInfo .btn:hover {
+  background-color: var(--global-color-1);
+  color: var(--global-color-2);
+  border-color: var(--global-color-1);
 }
 
 .sectionSecond .textInfo .btn:hover {
@@ -409,7 +450,7 @@ header ul li #NavNum:hover {
   flex-direction: column;
   gap: 1rem;
   padding: 3rem 2%;
-  background-color: #8484840a;
+  background-color: var(--global-color-7);
 }
 
 .sectionThree > h2 {
@@ -437,18 +478,19 @@ header ul li #NavNum:hover {
   box-shadow: 0 0 8px 3px #eeeeee;
   background-color: #fff;
   border-radius: 7px;
+  overflow: hidden;
 }
 
 .sectionThree .servicesBox .box h2 {
   font-family: var(--font-02);
-  line-height: 1.2em;
+  line-height: 1.4em;
   font-size: 1.5rem;
   margin-bottom: 10px;
 }
 
 .sectionThree .servicesBox .box p {
   font-family: var(--font-02);
-  line-height: 24px;
+  line-height: 1.5em;
 }
 
 /* DiscountSection */
@@ -490,7 +532,7 @@ header ul li #NavNum:hover {
 
 .DiscountSection a:hover {
   background-color: var(--global-color-4);
-  color: var(--global-color-1);
+  color: var(--global-color-0);
 }
 
 /* transformBox */
@@ -531,43 +573,81 @@ header ul li #NavNum:hover {
 
 .sectionFive .BeautySolutions {
   background-color: #fff;
-  box-shadow: 0 0 30px 1px #e6e6e6;
-  padding: 1rem;
-  border-radius: 1rem;
+  box-shadow: 0 4px 16px rgba(184, 134, 11, 0.08), 0 1px 4px rgba(26, 26, 26, 0.06);
+  padding: 1.6rem 1.4rem;
+  border-radius: 1.1rem;
+  border: 1px solid rgba(184, 134, 11, 0.18);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sectionFive .BeautySolutions:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 32px rgba(184, 134, 11, 0.16), 0 4px 10px rgba(26, 26, 26, 0.08);
 }
 
 .sectionFive .BeautySolutions h2 {
-  font-size: 2rem;
+  font-size: 1.7rem;
+  line-height: 1.4em;
   font-weight: 400;
   font-family: var(--font-02);
-  margin-bottom: 15px;
-  color: var(--global-color-1);
+  margin-bottom: 12px;
+  color: var(--global-color-0);
+  overflow: hidden;
 }
 
 .sectionFive .BeautySolutions > span {
-  border: 1px solid var(--global-color-1);
+  border: none;
   display: block;
-  width: 2rem;
+  width: 2.4rem;
+  height: 3px;
+  border-radius: 3px;
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, var(--global-color-1), var(--global-color-gold));
 }
-
-/* .sectionFive .BeautySolutions ul {} */
 
 .sectionFive .BeautySolutions ul li {
   display: flex; /* Make the li a flex container */
+  flex-wrap: nowrap;
   justify-content: space-between; /* Push name to left, price to right */
   align-items: center; /* Vertically center the text */
-  padding: 8px 0; /* Optional spacing between items */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Optional separator */
+  gap: 0.75rem;
+  padding: 10px 0; /* Optional spacing between items */
+  border-bottom: 1px solid var(--global-color-7); /* Optional separator */
+  transition: background-color 0.2s ease;
 }
 
-.sectionFive .BeautySolutions ul li span {
+.sectionFive .BeautySolutions ul li:last-of-type {
+  border-bottom: none;
+}
+
+.sectionFive .BeautySolutions ul li:hover {
+  background-color: var(--global-color-7);
+}
+
+/* the service name: allowed to wrap onto its own line rather than
+   pushing the price out of the card */
+.sectionFive .BeautySolutions ul li .li-name {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-wrap: break-word;
+  color: var(--global-color-2);
+}
+
+.sectionFive .BeautySolutions ul li span:not(.li-name):not(.li-badge) {
+  flex: 0 0 auto;
+  white-space: nowrap;
   color: var(--global-color-1);
-  font-weight: 500; /* Optional: make price stand out */
+  background-color: var(--global-color-2);
+  font-weight: 600; /* Optional: make price stand out */
+  font-size: 0.85rem;
+  padding: 3px 11px;
+  border-radius: 20px;
 }
 
 .sectionFive .BeautySolutions .condition {
-  font-size: 0.9rem;
-  color: var(--global-color-1);
+  font-size: 0.85rem;
+  color: var(--global-color-3);
   margin-top: 10px;
   font-style: italic;
 }
@@ -584,15 +664,15 @@ header ul li #NavNum:hover {
   color: #fff;
   background: linear-gradient(
     135deg,
-    var(--global-color-1) 0%,
-    var(--global-color-2) 100%
+    var(--global-color-2) 0%,
+    #3d2f0c 100%
   );
 }
 
 .sectionSix h2 {
   font-family: var(--font-02);
   font-size: 2rem;
-  color: #fff;
+  color: var(--global-color-1);
 }
 
 .sectionSix .reviewWrapper {
@@ -644,10 +724,33 @@ header ul li #NavNum:hover {
   padding: 2rem 2%;
 
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 2rem;
   background-color: #1a1a1a;
   color: #fff;
+}
+
+.beforefooter .followLinks {
+  display: flex;
+  gap: 0.9rem;
+}
+
+.beforefooter .followLinks a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1.5px solid var(--global-color-gold);
+  color: var(--global-color-gold);
+  transition: 0.3s;
+}
+
+.beforefooter .followLinks a:hover {
+  background-color: var(--global-color-gold);
+  color: #1a1a1a;
+  transform: translateY(-3px);
 }
 
 .beforefooter .box {
@@ -700,7 +803,8 @@ header ul li #NavNum:hover {
   box-sizing: border-box;
   background-color: none;
   background-color: var(--global-color-1);
-  color: #fff;
+  color: var(--global-color-2);
+  font-weight: 600;
   padding: 0.8rem 2rem;
   font-size: 20px;
   transition: all 0.4s ease;
@@ -745,4 +849,290 @@ footer {
   padding: 2rem 2%;
   background-color: #1a1a1a;
   color: #fff;
+}
+
+/* ratesTeaser */
+.ratesTeaser {
+  text-align: center;
+  padding: 3rem 5%;
+}
+
+.ratesTeaser h2 {
+  font-size: 2.5rem;
+  font-family: var(--font-02);
+  color: var(--global-color-0);
+  margin-bottom: 0.8rem;
+}
+
+.ratesTeaser p {
+  max-width: 700px;
+  margin: 0 auto 1.5rem;
+}
+
+.ratesTeaser .btn {
+  display: inline-block;
+  border: 1px solid var(--global-color-2);
+  border-radius: 7px;
+  padding: 17px 40px;
+  text-decoration: none;
+  background-color: var(--global-color-2);
+  color: var(--global-color-1);
+  font-weight: 600;
+  transition: all 0.4s ease;
+}
+
+.ratesTeaser .btn:hover {
+  background-color: var(--global-color-1);
+  color: var(--global-color-2);
+  border-color: var(--global-color-1);
+}
+
+/* sectionTestimonials */
+.sectionTestimonials {
+  padding: 4rem 5% 3rem;
+  text-align: center;
+  background-color: var(--global-color-7);
+}
+
+.sectionTestimonials h2 {
+  font-size: 2.5rem;
+  font-family: var(--font-02);
+  color: var(--global-color-0);
+  margin-bottom: 0.5rem;
+}
+
+.sectionTestimonials > p {
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
+
+.testimonialBox {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.testimonialBox .box {
+  background-color: #fff;
+  box-shadow: 0 0 8px 3px #eeeeee;
+  border-radius: 7px;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+  overflow: hidden;
+}
+
+.testimonialBox .box .stars {
+  color: var(--global-color-gold);
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+}
+
+.testimonialBox .box .quote {
+  font-style: italic;
+  color: var(--global-color-3);
+  line-height: 1.5em;
+}
+
+.testimonialBox .box .client {
+  font-weight: 600;
+  font-family: var(--font-02);
+  color: var(--global-color-0);
+}
+
+.sectionTestimonials .btn {
+  display: inline-block;
+  border: 1px solid var(--global-color-2);
+  border-radius: 7px;
+  padding: 15px 40px;
+  text-decoration: none;
+  background-color: var(--global-color-2);
+  color: var(--global-color-1);
+  font-weight: 600;
+  transition: all 0.4s ease;
+}
+
+.sectionTestimonials .btn:hover {
+  background-color: var(--global-color-1);
+  color: var(--global-color-2);
+  border-color: var(--global-color-1);
+}
+
+/* offer banner (site-wide announcement strip) */
+.offer-banner {
+  position: relative;
+  z-index: 100000;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0.9rem 3rem;
+  background-color: var(--global-color-2);
+  color: var(--global-color-1);
+  text-align: center;
+  font-family: var(--font-02);
+}
+
+.offer-banner p {
+  margin: 0;
+  font-weight: 600;
+}
+
+.offer-banner a {
+  border: 1px solid var(--global-color-1);
+  border-radius: 5px;
+  padding: 0.3rem 1rem;
+  color: var(--global-color-1);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.offer-banner a:hover {
+  background-color: var(--global-color-1);
+  color: var(--global-color-2);
+}
+
+.offer-close {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--global-color-1);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* scroll-reveal */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sectionThree .servicesBox .box:nth-child(2),
+.aboutServices .ser-box .box:nth-child(2),
+.sectionFive .BeautySolutions:nth-child(2),
+.testimonialBox .box:nth-child(2) {
+  transition-delay: 0.1s;
+}
+
+.sectionThree .servicesBox .box:nth-child(3),
+.aboutServices .ser-box .box:nth-child(3),
+.sectionFive .BeautySolutions:nth-child(3),
+.testimonialBox .box:nth-child(3) {
+  transition-delay: 0.2s;
+}
+
+.sectionThree .servicesBox .box:nth-child(4),
+.aboutServices .ser-box .box:nth-child(4),
+.sectionFive .BeautySolutions:nth-child(4) {
+  transition-delay: 0.3s;
+}
+
+.sectionFive .BeautySolutions:nth-child(5) {
+  transition-delay: 0.4s;
+}
+
+.sectionFive .BeautySolutions:nth-child(6) {
+  transition-delay: 0.5s;
+}
+
+.sectionFive .BeautySolutions:nth-child(7) {
+  transition-delay: 0.6s;
+}
+
+/* Lottie decorative accents */
+.lottie-hero-accent {
+  position: absolute;
+  top: 15%;
+  right: 6%;
+  width: 76px;
+  height: 76px;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.9;
+  overflow: hidden;
+}
+
+.lottie-rose-accent {
+  width: 76px;
+  height: 76px;
+  margin: 0 0 -0.5rem -0.8rem;
+  overflow: hidden;
+}
+
+@media (max-width: 610px) {
+  .lottie-hero-accent {
+    width: 48px;
+    height: 48px;
+    top: 110px;
+    right: 8%;
+  }
+}
+
+/* floating WhatsApp button */
+.whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 60px;
+  height: 60px;
+  background-color: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  z-index: 999999;
+  transition: transform 0.3s ease;
+  animation: whatsapp-pulse 2.5s infinite;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+
+.whatsapp-float svg {
+  width: 30px;
+  height: 30px;
+  fill: #fff;
+}
+
+@keyframes whatsapp-pulse {
+  0% {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35), 0 0 0 0 rgba(37, 211, 102, 0.5);
+  }
+  70% {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35), 0 0 0 14px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35), 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+@media (max-width: 600px) {
+  .whatsapp-float {
+    width: 52px;
+    height: 52px;
+    bottom: 16px;
+    right: 16px;
+  }
+
+  .whatsapp-float svg {
+    width: 26px;
+    height: 26px;
+  }
 }

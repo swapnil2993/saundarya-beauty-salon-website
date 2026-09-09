@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&family=Philosopher&family=Poppins:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,500&family=Poppins:wght@300;400;500;600&display=swap");
 
 * {
   padding: 0;
@@ -6,27 +6,31 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   overflow-x: hidden;
+  overflow-y: visible;
 }
 
 :root {
   --font-01: "Poppins", sans-serif;
-  --font-02: "Philosopher", sans-serif;
+  --font-02: "Playfair Display", serif;
+  --font-03: "Dancing Script", cursive;
 
-  /* color  */
-  --global-color-0: #e41345;
-  --global-color-1: #f70077;
+  /* color - gold & black palette, matched to the salon logo */
+  --global-color-0: #B8860B;
+  --global-color-1: #F8D856;
   --global-color-2: #1a1a1a;
   --global-color-3: #3e4359;
   --global-color-4: #f7f7f7;
   --global-color-5: #fff;
-  --global-color-6: #243673;
-  --global-color-7: #bfd1ff;
+  --global-color-6: #E8D9AE;
+  --global-color-7: #FCF8ED;
+  --global-color-gold: #B8860B;
 }
 
 /* sectionFirst */
 
 .sectionFirst {
   padding: 12rem 0% 15rem;
+  position: relative;
 }
 
 .sectionFirst::before {
@@ -77,7 +81,7 @@
 }
 
 .AboutMeInDetail .infoAboutMe h1 {
-  color: var(--global-color-1);
+  color: var(--global-color-0);
   font-family: var(--font-02);
 }
 
@@ -89,7 +93,7 @@
 
 .AboutMeInDetail .infoAboutMe h2 {
   font-family: var(--font-02);
-  color: var(--global-color-1);
+  color: var(--global-color-0);
 }
 
 .AboutMeInDetail .infoAboutMe .iconLink {
@@ -98,7 +102,7 @@
 }
 
 .AboutMeInDetail .infoAboutMe .iconLink i {
-  color: var(--global-color-1);
+  color: var(--global-color-0);
   overflow-y: hidden;
 }
 
@@ -111,7 +115,7 @@
 }
 
 .AboutMeInDetail .infoAboutMe .iconLink i a:hover {
-  color: var(--global-color-1);
+  color: var(--global-color-0);
 }
 
 /* -----------section three--------------- */
@@ -131,15 +135,17 @@
 }
 
 .aboutTeam-Info .teamText .t-team {
-  font-family: var(--font-02);
-  font-weight: 400;
+  font-family: var(--font-03);
+  font-weight: 600;
+  font-size: 1.6rem;
+  color: var(--global-color-0);
 }
 
 .aboutTeam-Info .teamText .t-heading {
   font-size: 2rem;
   font-weight: 400;
   font-family: var(--font-02);
-  color: var(--global-color-1);
+  color: var(--global-color-0);
 }
 
 /* .aboutTeam-Info .teamText .t-lines {} */
@@ -255,5 +261,5 @@
 
 .aboutTeam-Info .teamImgInfo .box.fourthBox .btn a:hover {
   background-color: #fff;
-  color: var(--global-color-1);
+  color: var(--global-color-0);
 }

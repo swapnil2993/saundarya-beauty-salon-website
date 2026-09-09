@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&family=Philosopher&family=Poppins:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,500&family=Poppins:wght@300;400;500;600&display=swap");
 
 * {
   padding: 0;
@@ -6,27 +6,31 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   overflow-x: hidden;
+  overflow-y: visible;
 }
 
 :root {
   --font-01: "Poppins", sans-serif;
-  --font-02: "Philosopher", sans-serif;
+  --font-02: "Playfair Display", serif;
+  --font-03: "Dancing Script", cursive;
 
-  /* color  */
-  --global-color-0: #e41345;
-  --global-color-1: #f70077;
+  /* color - gold & black palette, matched to the salon logo */
+  --global-color-0: #B8860B;
+  --global-color-1: #F8D856;
   --global-color-2: #1a1a1a;
   --global-color-3: #3e4359;
   --global-color-4: #f7f7f7;
   --global-color-5: #fff;
-  --global-color-6: #243673;
-  --global-color-7: #bfd1ff;
+  --global-color-6: #E8D9AE;
+  --global-color-7: #FCF8ED;
+  --global-color-gold: #B8860B;
 }
 
 /* sectionFirst */
 
 .sectionFirst {
   padding: 12rem 0% 15rem;
+  position: relative;
 }
 
 .sectionFirst::before {
@@ -51,77 +55,55 @@
   font-family: var(--font-02);
 }
 
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(250px, 1fr)
-  ); 100px; /* Responsive grid */
-  gap: 15px;
-  padding: 20px;
-  max-width: 980px; /* limits the gallery width */
-    margin: 0 auto; /* centers the entire gallery horizontally */
-}
-
-.gallery img {
-  width: 100%;
-  height: 250px; /* fixed height for uniformity */
-  object-fit: cover; /* crops and centers image without distortion */
-  border-radius: 8px; /* optional: smooth corners */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.gallery img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
-
 /* DiscountSection */
 
 .DiscountSection {
   padding: 5rem 5%;
 }
 
-/* beforeAfter  */
-.beforeAfter {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 600px));
-  gap: 4rem 1rem;
-  padding: 5rem 2rem;
-  justify-content: center;
+/* gallery (auto-populated from img/gallery/ - see js/gallery.js) */
+.gallerySection {
+  padding: 5rem 5%;
 }
 
-.beforeAfter .gridBox {
-  display: flex;
-  gap: 1rem;
+.galleryGrid {
+  column-count: 3;
+  column-gap: 1.5rem;
 }
 
-.beforeAfter .gridBox .box {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-.beforeAfter .gridBox .box:nth-child(1) {
-  flex-direction: column-reverse;
-}
-
-.beforeAfter .gridBox .box .img {
-  height: 100%;
-  width: 100%;
-  overflow-y: hidden;
-  box-shadow: 0 0 17px var(--global-color-2);
-  /* padding: .5rem; */
+.galleryGrid .item {
+  break-inside: avoid;
+  margin-bottom: 1.5rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(184, 134, 11, 0.08), 0 1px 4px rgba(26, 26, 26, 0.06);
+  border: 1px solid rgba(184, 134, 11, 0.18);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.beforeAfter .gridBox .box .img img {
-  height: 100%;
+.galleryGrid .item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 32px rgba(184, 134, 11, 0.16), 0 4px 10px rgba(26, 26, 26, 0.08);
+}
+
+.galleryGrid .item img {
+  display: block;
   width: 100%;
 }
 
-.beforeAfter .gridBox .box .text {
-  overflow-y: hidden;
+.gallery-empty {
   text-align: center;
-  font-weight: 700;
-  font-size: 1.4rem;
-  font-family: var(--font-02);
+  color: var(--global-color-3);
+}
+
+@media (max-width: 900px) {
+  .galleryGrid {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .galleryGrid {
+    column-count: 1;
+  }
 }

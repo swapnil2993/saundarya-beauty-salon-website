@@ -14,13 +14,24 @@
     <meta name="author" content="Vibhuti Pande - Saundarya Beauty Salon">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://sparkly-jalebi-1969a5.netlify.app/portfolio.html">
-    
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./img/favicon-180.png">
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sparkly-jalebi-1969a5.netlify.app/portfolio.html">
     <meta property="og:title" content="Makeup & Beauty Portfolio | Saundarya Beauty Salon">
     <meta property="og:description" content="Stunning bridal makeup transformations & beauty work. Professional makeup artist portfolio in Pune. View our gallery of real client results.">
     <meta property="og:image" content="https://sparkly-jalebi-1969a5.netlify.app/img/model1.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://sparkly-jalebi-1969a5.netlify.app/portfolio.html">
+    <meta property="twitter:title" content="Makeup & Beauty Portfolio | Saundarya Beauty Salon">
+    <meta property="twitter:description" content="Stunning bridal makeup transformations & beauty work. Professional makeup artist portfolio in Pune. View our gallery of real client results.">
+    <meta property="twitter:image" content="https://sparkly-jalebi-1969a5.netlify.app/img/model1.png">
 
     <!-- adding css  -->
     <link rel="stylesheet" href="./css/style.css">
@@ -30,10 +41,6 @@
     <!-- mediaQuery css  -->
     <link rel="stylesheet" href="./css/MediaQuery.css">
 
-    <!-- fontawesome  -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-        crossorigin="anonymous"></script>
-    
     <!-- Breadcrumb Schema -->
     <script type="application/ld+json">
     {
@@ -57,41 +64,42 @@
 <body>
 
     <header>
-        <a href="./index.html" class="logo">Saundarya Beauty Salon</a>
+        <a href="./index.html" class="logo"><img src="./img/logo-icon.png" alt="Saundarya Beauty Salon logo" width="151" height="176"><span class="logo-text">Saundarya Beauty Salon</span></a>
         <div class="menuToggle"></div>
         <nav>
             <ul>
                 <li><a href="./index.html" class="active">Home</a></li>
                 <li><a href="./about.html">About</a></li>
                 <li><a href="./services.html">Services</a></li>
+                <li><a href="./rates.html">Rates</a></li>
                 <li><a href="./portfolio.html">Portfolio</a></li>
                 <li><a href="./contact.html">Contact</a></li>
-                <li><a href="tel:+918087137894" id="NavNum">+91 8087137894</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- OFFER BANNER (inactive). To activate: replace [OFFER TEXT] and
+         [END DATE] below with a real offer, then delete the comment
+         markers wrapping this div (the line above and the line below
+         the closing div tag). Keep this in sync across all 5 HTML pages
+         so the offer is site-wide.
+    <div class="offer-banner">
+        <p><strong>[OFFER TEXT]</strong> — Valid till [END DATE]</p>
+        <a href="https://wa.me/918087137894?text=Hi%21%20I%27d%20like%20to%20claim%20the%20current%20offer."
+            target="_blank" rel="noopener">Claim Now</a>
+        <button class="offer-close" aria-label="Dismiss offer banner">&times;</button>
+    </div>
+    -->
+
     <section class="sectionFirst">
-        <h1>Porfolio</h1>
+        <h1>Portfolio</h1>
+        <div id="lottie-sparkle-hero" class="lottie-hero-accent" aria-hidden="true"></div>
 
         <!-- transparent Img -->
         <section class="transform-img">
-            <img src="./img/background180.svg" alt="Elegant floral background design">
+            <img src="./img/background180.svg" alt="Elegant floral background design" width="1000" height="100">
         </section>
     </section>
-
-    <!-- gallery -->
-    <div class="gallery">
-        <!-- <div class="img"></div> -->
-        <img src="./img/model1.png" alt="Bridal makeup transformation at Saundarya Beauty Salon">
-        <img src="./img/model3.jpg" alt="Elegant evening makeup look by professional makeup artist">
-        <img src="./img/model2.jpg" alt="Professional hairstyling and makeup services">
-        <img src="./img/model4.png" alt="Glamorous party makeup and styling">
-        <img src="./img/1.jpg" alt="Beautiful bridal makeover showcase">
-        <img src="./img/2.jpg" alt="Expert makeup artistry portfolio">
-        <img src="./img/5.jpg" alt="Stunning makeup transformation results">
-        <img src="./img/7.jpg" alt="Professional beauty salon portfolio work">
-    </div>
 
     <!-- discount section  -->
     <!-- <section class="DiscountSection">
@@ -108,39 +116,10 @@
         <a href="#">BOOK AN APPINTMENT</a>
     </section> -->
 
-    <!-- before and After 
-    <section class="beforeAfter">
-
-        <div class="gridBox">
-            <div class="box">
-                <div class="img">
-                    <img src="./img/before1.jpg" alt="">
-                </div>
-                <div class="text">Before</div>
-            </div>
-            <div class="box">
-                <div class="img">
-                    <img src="./img/after1.jpg">
-                </div>
-                <div class="text">After</div>
-            </div>
-        </div>
-        <div class="gridBox">
-            <div class="box">
-                <div class="img">
-                    <img src="./img/before2.jpg" alt="">
-                </div>
-                <div class="text">Before</div>
-            </div>
-            <div class="box">
-                <div class="img">
-                    <img src="./img/after2.jpg">
-                </div>
-                <div class="text">After</div>
-            </div>
-        </div>
-
-    </section> -->
+    <!-- gallery (auto-populated from img/gallery/ - see js/gallery.js) -->
+    <section class="gallerySection">
+        <div class="galleryGrid" id="galleryGrid"></div>
+    </section>
 
     <section class="sectionSix">
         <h2>Review Us on Google</h2>
@@ -159,7 +138,7 @@
             </div>
 
             <div class="reviewQR">
-                <img src="./img/ReviewQR.png" alt="Google Review QR Code" />
+                <img src="./img/ReviewQR.png" alt="Google Review QR Code" width="132" height="132" loading="lazy" />
                 <p>Or scan to review us instantly</p>
             </div>
         </div>
@@ -173,6 +152,7 @@
                 <li><a href="./index.html">Home</a></li>
                 <li><a href="./about.html">About</a></li>
                 <li><a href="./services.html">Services</a></li>
+                <li><a href="./rates.html">Rates</a></li>
                 <li><a href="./portfolio.html">Portfolio</a></li>
                 <li><a href="./contact.html">Contact</a></li>
             </ul>
@@ -191,6 +171,21 @@
                 <a href="tel:+918087137894">+91 8087137894</a>
             </div>
         </div>
+
+        <div class="box">
+            <div class="bf-text">Follow Us</div>
+            <div class="followLinks">
+                <a href="https://www.instagram.com/vibhuti19.pande/" target="_blank" rel="noopener"
+                    aria-label="Follow Saundarya Beauty Salon on Instagram">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle>
+                    </svg>
+                </a>
+            </div>
+        </div>
     </div>
 
     <!-- footer  -->
@@ -200,8 +195,20 @@
     </footer>
 
 
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/918087137894?text=Hi%21%20I%27d%20like%20to%20know%20more%20about%20your%20services%20at%20Saundarya%20Beauty%20Salon."
+        class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" aria-hidden="true">
+            <path
+                d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z" />
+        </svg>
+    </a>
+
     <!-- js  -->
     <script src="./js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+    <script src="./js/animations.js"></script>
+    <script src="./js/gallery.js"></script>
 </body>
 
 </html>

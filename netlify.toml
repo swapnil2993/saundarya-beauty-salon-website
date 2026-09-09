@@ -1,0 +1,36 @@
+# Netlify runs on its own edge infrastructure and ignores .htaccess (an Apache
+# config file). This file replaces it so caching/compression actually apply.
+# Netlify already serves gzip/brotli compression automatically.
+
+# Regenerates img/gallery/manifest.json from whatever images are in
+# img/gallery/ at deploy time - see scripts/build-gallery.js.
+[build]
+  command = "node scripts/build-gallery.js"
+  publish = "."
+
+# Kept short (unlike /img/* below) since this file is meant to change
+# whenever photos are added/removed from img/gallery/.
+[[headers]]
+  for = "/img/gallery/manifest.json"
+  [headers.values]
+    Cache-Control = "public, max-age=300, must-revalidate"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"

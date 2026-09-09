@@ -4,6 +4,10 @@
     text-align: center;
   }
 
+  .testimonialBox {
+    grid-template-columns: 1fr;
+  }
+
   .transformBox {
     margin: 0 10%;
   }
@@ -165,9 +169,29 @@
     transform: translateX(-200px);
   }
 
-  /* section five  */
+  /* section five - swipeable carousel on mobile (rates.html only) */
   .sectionFive {
-    grid-template-columns: repeat(1, 1fr);
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+    padding: 0.5rem 7.5% 1rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .sectionFive::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sectionFive .BeautySolutions {
+    flex: 0 0 85%;
+    max-width: 85%;
+    scroll-snap-align: center;
+  }
+
+  .ratesCarouselDots {
+    display: flex;
   }
 
   /* footer */

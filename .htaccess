@@ -1,4 +1,9 @@
 # .htaccess for Saundarya Beauty Salon - SEO & Performance
+#
+# NOTE: This site is hosted on Netlify, which does not run Apache and does
+# NOT read this file — it has no effect on the live site. Caching/compression
+# for Netlify is configured in netlify.toml instead. This file is kept only
+# in case the site is ever migrated to Apache-based hosting.
 
 # Enable Compression
 <IfModule mod_deflate.c>
