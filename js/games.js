@@ -4,7 +4,8 @@
 // Scoring: every game normalizes its result to a 0-100 point scale.
 // The customer's best score across ALL games (stored in localStorage,
 // per-browser) determines their reward tier. Update TIERS below to
-// change the discount thresholds.
+// change the discount thresholds. Best scores expire after SCORE_TTL_MS
+// (12 hours) of inactivity, so an old high score can't be claimed forever.
 //
 // Redemption is manual: the "Claim on WhatsApp" button opens a
 // pre-filled WhatsApp message with the customer's score and unlocked
@@ -144,6 +145,11 @@
         { min: 0, discount: 0 }
     ];
 
+    // Best scores are forgotten after this long, so a customer can't keep
+    // cashing in the same high score forever - they need to come back and
+    // play again after it expires.
+    const SCORE_TTL_MS = 12 * 60 * 60 * 1000;
+
     // ---------------- claim code ----------------
     // Not a substitute for a real backend: WhatsApp's pre-filled message text
     // can still be edited by the customer before sending. This code exists so
@@ -166,14 +172,32 @@
         return TIERS.find(t => score >= t.min);
     }
 
+    function readStoredBest(game) {
+        const raw = localStorage.getItem(STORAGE_PREFIX + game + '_best');
+        if (!raw) return null;
+        let data;
+        try {
+            data = JSON.parse(raw);
+        } catch (e) {
+            return null;
+        }
+        if (!data || typeof data.score !== 'number' || typeof data.ts !== 'number') return null;
+        if (Date.now() - data.ts > SCORE_TTL_MS) {
+            localStorage.removeItem(STORAGE_PREFIX + game + '_best');
+            return null;
+        }
+        return data;
+    }
+
     function getBest(game) {
-        return Number(localStorage.getItem(STORAGE_PREFIX + game + '_best') || 0);
+        const data = readStoredBest(game);
+        return data ? data.score : 0;
     }
 
     function setBest(game, score) {
         const current = getBest(game);
         const best = Math.max(current, score);
-        localStorage.setItem(STORAGE_PREFIX + game + '_best', String(best));
+        localStorage.setItem(STORAGE_PREFIX + game + '_best', JSON.stringify({ score: best, ts: Date.now() }));
         return best;
     }
 
@@ -227,10 +251,22 @@
         });
     }
 
+    function trackEvent(eventName, params) {
+        if (typeof window.gtag === 'function') {
+            window.gtag('event', eventName, params);
+        }
+    }
+
     function recordScore(game, rawScore) {
         const points = Math.max(0, Math.min(100, Math.round(rawScore)));
         setBest(game, points);
         refreshRewardStatus();
+        const tier = getTier(getOverallBest());
+        trackEvent('game_complete', {
+            game_name: GAMES[game],
+            score: points,
+            unlocked_discount: tier.discount
+        });
         return points;
     }
 
@@ -315,7 +351,7 @@
             '</div>';
 
         modalBody.querySelector('[data-play-again]').addEventListener('click', function () {
-            GAME_STARTERS[currentGameKey]();
+            startGame(currentGameKey);
         });
         modalBody.querySelector('[data-close-modal]').addEventListener('click', closeModal);
     }
@@ -660,11 +696,16 @@
         wheel: startWheelGame
     };
 
+    function startGame(key) {
+        currentGameKey = key;
+        trackEvent('game_start', { game_name: GAMES[key] });
+        GAME_STARTERS[key]();
+    }
+
     document.querySelectorAll('[data-open-game]').forEach(function (btn) {
         btn.addEventListener('click', function () {
             SFX.click();
-            currentGameKey = btn.dataset.openGame;
-            GAME_STARTERS[currentGameKey]();
+            startGame(btn.dataset.openGame);
         });
     });
 
