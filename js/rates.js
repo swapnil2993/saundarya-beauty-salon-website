@@ -18,6 +18,31 @@
 // ============================================================
 const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRVQO8BqUbY1BonqPPHFM2ZFfs-GzePCFL0IVxoG6V0dxlkoAt5l4abVPSZkE0NB1su-0d0HlErAwBX/pub?output=csv";
 
+// Remembers the last successfully-fetched sheet data (rendered HTML +
+// timestamp) so that if the live fetch ever fails - most commonly because
+// the visitor is offline, since the Google Sheet is a different origin the
+// service worker deliberately doesn't cache - we can still show the most
+// recent real prices instead of falling all the way back to whatever
+// static prices happened to be in the HTML at the last deploy.
+const RATES_CACHE_KEY = 'saundarya_rates_cache';
+
+function saveRatesCache(html) {
+    try {
+        localStorage.setItem(RATES_CACHE_KEY, JSON.stringify({ html: html, ts: Date.now() }));
+    } catch (e) {
+        // localStorage can throw (private browsing, quota, etc.) - non-fatal either way.
+    }
+}
+
+function loadRatesCache() {
+    try {
+        const raw = localStorage.getItem(RATES_CACHE_KEY);
+        return raw ? JSON.parse(raw) : null;
+    } catch (e) {
+        return null;
+    }
+}
+
 async function loadRatesFromSheet() {
     if (!CSV_URL) return;
 
@@ -37,14 +62,29 @@ async function loadRatesFromSheet() {
         const grouped = groupByCategory(rows);
         if (!Object.keys(grouped).length) throw new Error('No valid rows to render');
 
-        container.innerHTML = renderCategories(grouped);
+        const html = renderCategories(grouped);
+        container.innerHTML = html;
         if (window.initScrollReveal) window.initScrollReveal();
         initRatesCarouselDots();
+        saveRatesCache(html);
         if (syncNote) {
             syncNote.textContent = 'Prices live-synced from our price sheet on ' + new Date().toLocaleString();
         }
     } catch (err) {
-        console.warn('[rates] Could not load live prices from the sheet, showing the prices saved on the page instead.', err);
+        console.warn('[rates] Could not load live prices from the sheet.', err);
+
+        const cached = loadRatesCache();
+        if (cached && cached.html) {
+            container.innerHTML = cached.html;
+            if (window.initScrollReveal) window.initScrollReveal();
+            initRatesCarouselDots();
+            if (syncNote) {
+                syncNote.textContent = 'Showing prices last synced on ' + new Date(cached.ts).toLocaleString() +
+                    ' (you appear to be offline).';
+            }
+        } else {
+            console.warn('[rates] No previously-synced prices saved either, showing the prices saved on the page instead.');
+        }
     }
 }
 

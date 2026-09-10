@@ -15,6 +15,14 @@
   [headers.values]
     Cache-Control = "public, max-age=300, must-revalidate"
 
+# The service worker must never be served stale, otherwise browsers can
+# take a long time to pick up a new version (overriding the /*.js rule
+# below, which would otherwise cache it for 30 days).
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"
+
 [[headers]]
   for = "/*.css"
   [headers.values]
