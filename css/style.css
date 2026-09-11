@@ -1136,3 +1136,112 @@ footer {
     height: 26px;
   }
 }
+
+/* ============================================================
+   Custom "Install app" banner - shown on demand via the
+   beforeinstallprompt event (js/pwa-install.js). Chrome's own
+   automatic install prompt rarely fires on a first visit (e.g. from a
+   Google Business Profile link), so this gives visitors an explicit,
+   always-visible way to install. Sits above the WhatsApp float /
+   rates.html music toggle rather than in either bottom corner.
+   ============================================================ */
+
+.pwaInstallBanner {
+  position: fixed;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999997;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: min(340px, calc(100vw - 32px));
+  background-color: var(--global-color-2);
+  color: var(--global-color-5);
+  border: 1px solid var(--global-color-gold);
+  border-radius: 14px;
+  padding: 14px 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  animation: pwaBannerIn 0.4s ease;
+}
+
+.pwaInstallBanner[hidden] {
+  display: none;
+}
+
+.pwaInstallBanner-icon {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.pwaInstallBanner-text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  font-size: 0.8rem;
+  line-height: 1.3;
+  overflow: hidden;
+}
+
+.pwaInstallBanner-text strong {
+  font-family: var(--font-02);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--global-color-1);
+}
+
+.pwaInstallBanner-install {
+  background-color: var(--global-color-gold);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.pwaInstallBanner-install:hover {
+  background-color: var(--global-color-1);
+  color: var(--global-color-2);
+  transform: scale(1.05);
+}
+
+.pwaInstallBanner-close {
+  background: none;
+  border: none;
+  color: var(--global-color-6);
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+@keyframes pwaBannerIn {
+  from {
+    transform: translate(-50%, 16px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 610px) {
+  .pwaInstallBanner {
+    bottom: 84px;
+    padding: 12px 14px;
+  }
+}

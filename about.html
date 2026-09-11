@@ -267,9 +267,21 @@
         </svg>
     </a>
 
+    <!-- Custom install-app banner (js/pwa-install.js) -->
+    <div class="pwaInstallBanner" id="pwaInstallBanner" hidden>
+        <span class="pwaInstallBanner-icon" aria-hidden="true">📲</span>
+        <div class="pwaInstallBanner-text">
+            <strong>Install our app</strong>
+            <span>Quick access, offline browsing &amp; game rewards</span>
+        </div>
+        <button type="button" class="pwaInstallBanner-install" id="pwaInstallBtn">Install</button>
+        <button type="button" class="pwaInstallBanner-close" id="pwaInstallClose" aria-label="Dismiss install prompt">&times;</button>
+    </div>
+
     <!-- js  -->
     <script src="./js/script.js"></script>
     <script src="./js/sw-register.js"></script>
+    <script src="./js/pwa-install.js"></script>
     <script src="./js/analytics-events.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
     <script src="./js/animations.js"></script>

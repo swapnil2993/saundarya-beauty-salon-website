@@ -1,7 +1,7 @@
 // Service worker for offline support. Bump CACHE_VERSION whenever the
 // precached file list below changes, so old caches get cleaned up and
 // visitors pick up the new set on their next visit.
-const CACHE_VERSION = 'saundarya-v2';
+const CACHE_VERSION = 'saundarya-v3';
 
 const PRECACHE_URLS = [
     '/',
@@ -22,6 +22,7 @@ const PRECACHE_URLS = [
     '/css/MediaQuery.css',
     '/js/script.js',
     '/js/analytics-events.js',
+    '/js/pwa-install.js',
     '/js/animations.js',
     '/js/gallery.js',
     '/js/games.js',
