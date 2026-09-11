@@ -1,7 +1,7 @@
 // Service worker for offline support. Bump CACHE_VERSION whenever the
 // precached file list below changes, so old caches get cleaned up and
 // visitors pick up the new set on their next visit.
-const CACHE_VERSION = 'saundarya-v1';
+const CACHE_VERSION = 'saundarya-v2';
 
 const PRECACHE_URLS = [
     '/',

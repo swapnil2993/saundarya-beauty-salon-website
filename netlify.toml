@@ -23,6 +23,15 @@
   [headers.values]
     Cache-Control = "no-cache"
 
+# Netlify doesn't know the .webmanifest extension and falls back to
+# application/octet-stream, which Chrome silently refuses to parse as a
+# web app manifest - breaking PWA installability (no "Add to Home
+# Screen" prompt on Android). Force the correct MIME type.
+[[headers]]
+  for = "/manifest.webmanifest"
+  [headers.values]
+    Content-Type = "application/manifest+json"
+
 [[headers]]
   for = "/*.css"
   [headers.values]

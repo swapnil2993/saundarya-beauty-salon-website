@@ -2,7 +2,7 @@
   "name": "Saundarya Beauty Salon",
   "short_name": "Saundarya",
   "description": "Bridal makeup, hairstyling, facials, waxing & beauty services in Punawale, Pune.",
-  "start_url": "/index.html",
+  "start_url": "/rates.html#playWinSection",
   "scope": "/",
   "id": "/index.html",
   "display": "standalone",
