@@ -14,7 +14,8 @@
 (function () {
     const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1XxHUVj1PgzcIphlNj2YcEYKP0TjmrwtdnkIIXYfo5bo/gviz/tq?tqx=out:csv&gid=1242513158';
     // Amazon rejects sites whose Amazon links lack the Associates tracking ID,
-    // so any amazon.* link in the sheet that has no tag= gets this one added.
+    // so every amazon.* link in the sheet gets this tag, replacing any other tag=
+    // (e.g. one left over from the old rejected account).
     const AMAZON_TAG = 'saundaryare09-21';
     const CACHE_KEY = 'saundarya-shop-csv';
     const CATEGORIES = [
@@ -110,7 +111,7 @@
     function withAmazonTag(url) {
         try {
             const u = new URL(url);
-            if (/(^|\.)amazon\.[a-z.]+$/i.test(u.hostname) && !u.searchParams.get('tag')) {
+            if (/(^|\.)amazon\.[a-z.]+$/i.test(u.hostname) && u.searchParams.get('tag') !== AMAZON_TAG) {
                 u.searchParams.set('tag', AMAZON_TAG);
                 return u.toString();
             }
