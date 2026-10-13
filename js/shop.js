@@ -15,7 +15,7 @@
     const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1XxHUVj1PgzcIphlNj2YcEYKP0TjmrwtdnkIIXYfo5bo/gviz/tq?tqx=out:csv&gid=1242513158';
     // Amazon rejects sites whose Amazon links lack the Associates tracking ID,
     // so any amazon.* link in the sheet that has no tag= gets this one added.
-    const AMAZON_TAG = 'saundaryareco-21';
+    const AMAZON_TAG = 'saundaryare09-21';
     const CACHE_KEY = 'saundarya-shop-csv';
     const CATEGORIES = [
         { id: 'beauty', label: 'Beauty Products', aliases: ['beauty products', 'beauty'] },
