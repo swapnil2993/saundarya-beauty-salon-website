@@ -1,3 +1,32 @@
+/* sectionFirst */
+
+.sectionFirst {
+  padding: 12rem 0% 15rem;
+  position: relative;
+}
+
+.sectionFirst::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color: var(--global-color-2); */
+  background-image: url("../img/serviceBackGround.jpg");
+  z-index: -1;
+  opacity: 0.7;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.sectionFirst h1 {
+  text-align: center;
+  font-size: 5rem;
+  font-family: var(--font-02);
+}
+
 /* shop (auto-populated from data/products.json - see js/shop.js) */
 .shopSection {
   padding: 4rem 5% 5rem;
